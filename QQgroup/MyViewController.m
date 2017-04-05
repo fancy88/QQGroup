@@ -48,15 +48,13 @@
         
         NSString *string=[NSString stringWithFormat:@"第%i分组",i];
         
-        //创建一个字典 包含数组，分组名，是否展开的标示
+        // 创建一个字典 包含数组，分组名，是否展开的标示
         
-        NSMutableDictionary *dic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:array,DIC_ARARRY,string,DIC_TITILESTRING,[NSNumber numberWithInt:0],DIC_EXPANDED,nil];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:array,DIC_ARARRY,string,DIC_TITILESTRING,[NSNumber numberWithInt:0],DIC_EXPANDED,nil];
         
-        //将字典加入数组
+        // 将字典加入数组
         [DataArray addObject:dic];
-        
     }
-    
 }
 
 - (void)viewDidLoad {
@@ -75,9 +73,9 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSMutableDictionary *dic=[DataArray objectAtIndex:section];
     
-    NSArray *array=[dic objectForKey:DIC_ARARRY];
+    NSMutableDictionary *dic = [DataArray objectAtIndex:section];
+    NSArray *array = [dic objectForKey:DIC_ARARRY];
     
     //判断是收缩还是展开
     
@@ -94,8 +92,7 @@
     static NSString *str = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:str];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str
-                ];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
     }
     NSArray *array = [[DataArray objectAtIndex:indexPath.section] objectForKey:DIC_ARARRY];
     cell.textLabel.text=[array objectAtIndex:indexPath.row];
@@ -114,7 +111,7 @@
     
     hView.backgroundColor=[UIColor whiteColor];
     
-    UIButton* eButton = [[UIButton alloc] init];
+    UIButton *eButton = [[UIButton alloc] init];
     
     //按钮填充整个视图
     eButton.frame = hView.frame;
